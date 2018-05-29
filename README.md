@@ -6,6 +6,12 @@ This is an example application showcasing how to build test and deploy a Django 
 
 You can follow along with this project by reading the [documentation](https://circleci.com/docs/2.0/language-python/).
 
+## Added Stuff
+
+* circleci
+* Docker image and docker compose
+* signed commit
+
 ## Features of the demo
 
 - regularly updated to use latest Python and Django (currently Python 3.6.4 and Django 2.0.1)
