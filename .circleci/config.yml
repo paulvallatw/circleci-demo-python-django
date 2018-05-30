@@ -63,8 +63,6 @@ jobs:
     steps:
       - run:
           name: Install helm
-          command: |
-            echo "hello"
 workflows:
   version: 2
   unittest-build:
