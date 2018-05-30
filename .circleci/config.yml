@@ -50,6 +50,7 @@ jobs:
           name: Authenticate to gcloud
           command: |
             echo $BASE64_SERVICE_ACCOUNT | base64 -d > ${HOME}/gcloud-service-key.json
+            sudo chmod -R 0777 /opt
             gcloud --quiet components update
             gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
       - run:
