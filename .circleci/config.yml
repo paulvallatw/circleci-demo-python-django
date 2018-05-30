@@ -51,7 +51,7 @@ jobs:
             docker build -t $DOCKER_GCR/$GOOGLE_PROJECT_ID/circleci-demo-python-django:$TAG .
       - run:
           name: Decode service account key to push to docker registry
-          command: echo $BASE64_SERVICE_ACCOUNT | base64 --decode -i > ${HOME}/gcloud-service-key.json
+          command: echo $BASE64_SERVICE_ACCOUNT | base64 -d > ${HOME}/gcloud-service-key.json
       - run:
           name: Authenticate to gcloud
           command: gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
