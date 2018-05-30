@@ -58,6 +58,14 @@ jobs:
       - run:
           name: push docker image
           command: docker push $DOCKER_GCR/$GOOGLE_PROJECT_ID/circleci-demo-python-django:$CIRCLE_BUILD_NUM
+  deploy:
+    docker: google/cloud-sdk
+    steps:
+      - run:
+          name: Install helm
+          command: |
+            curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.9.1-linux-amd64.tar.gz && \
+            tar -xvf helm-v2.9.1-linux-amd64.tar.gz
 workflows:
   version: 2
   unittest-build:
@@ -66,3 +74,6 @@ workflows:
       - build:
           requires:
             - unittest
+      - deploy:
+          requires:
+            - build
