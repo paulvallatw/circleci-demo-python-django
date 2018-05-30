@@ -85,6 +85,7 @@ jobs:
             helm repo update 
             helm list
             helm search
+            helm install stable/mysql
 workflows:
   version: 2
   unittest-build:
