@@ -36,14 +36,11 @@ jobs:
           path: test-results
           destination: tr1
   build:
-    docker:
-      - image: docker:latest
-      - image: google/cloud-sdk:alpine
+    machine: true
     environment:
       DOCKER_GCR: "asia.gcr.io"
     steps:
       - checkout
-      - setup_remote_docker
       - run: 
           name: Build docker image
           command: |
