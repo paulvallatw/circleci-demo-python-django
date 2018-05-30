@@ -61,7 +61,14 @@ jobs:
   deploy:
     docker:
       - image: google/cloud-sdk
+    environment:
+      GOOGLE_PROJECT_ID: "anz-k8s"
+      GOOGLE_COMPUTE_ZONE: "australia-southeast1-a"
+      GOOGLE_CLUSTER_NAME: "cluster-1"
     steps:
+      - run:
+          name: Store Service Account
+          command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
       - run:
           name: Install helm
           command: |
@@ -69,8 +76,8 @@ jobs:
             tar -xvf helm-v2.9.1-linux-amd64.tar.gz 
             mv linux-amd64/helm /usr/local/bin/helm
             helm
-            echo $PATH
-            echo "hello"
+            helm list
+            cat ${HOME}/gcloud-service-key.json 
 workflows:
   version: 2
   unittest-build:
