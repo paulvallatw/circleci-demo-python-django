@@ -81,10 +81,9 @@ jobs:
             tar -xvf helm-v2.9.1-linux-amd64.tar.gz 
             mv linux-amd64/helm /usr/local/bin/helm
             kubectl config view
-            helm
             helm init --service-account tiller
+            helm repo update 
             helm list
-            cat ${HOME}/gcloud-service-key.json 
 workflows:
   version: 2
   unittest-build:
