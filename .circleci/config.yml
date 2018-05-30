@@ -84,6 +84,7 @@ jobs:
             helm init --service-account tiller
             helm repo update 
             helm list
+            helm search
 workflows:
   version: 2
   unittest-build:
