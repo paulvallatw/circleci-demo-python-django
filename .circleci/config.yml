@@ -59,10 +59,13 @@ jobs:
           name: push docker image
           command: docker push $DOCKER_GCR/$GOOGLE_PROJECT_ID/circleci-demo-python-django:$CIRCLE_BUILD_NUM
   deploy:
-    docker: google/cloud-sdk
+    docker:
+      - image: google/cloud-sdk
     steps:
       - run:
           name: Install helm
+          command: |
+            echo "hello"
 workflows:
   version: 2
   unittest-build:
